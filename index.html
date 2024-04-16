@@ -77,28 +77,65 @@
 </p>
 
 <p>
-  <img alt="tiny picture of a car" class="img-fluid" src="images/car.png" style="width:150;height:150px;">>
+  <img alt="cifar10 example images" class="img-fluid" src="images/cifar_pics.png" style="width:300;height:100px;">
 </p>
 
 
 <h2>2) Paper Summary</h2>
 
 <p>
-  Paper summary
+  <img alt="softmax with temperature" class="img-fluid" src="images/softmax_with_temp.png" style="width:300;height:100px;">
 </p>
 
 
 <h2>3) Implementation</h2>
 
 <p>
-  Implementation details
+  We had access to the following large pre-trained models from the <a href="https://github.com/huyvnphan/PyTorch_CIFAR10">PyTorch_CIFAR10 repo</a>:
+</p>
+
+<img alt="table of pre-trained models" class="img-fluid" src="images/pytorch_cifar10.png" style="width:320;height:400px;">
+
+<p>
+  <br>
+  In our initial test we used vgg13_bn (94.22% val accuracy) as the teacher model, which has the following architecture:
+</p>
+
+<img alt="vgg13_bn architecture" class="img-fluid" src="images/teacher.png" style="width:400;height:500px;">
+
+<p>
+  <br>
+  We set up a very simple student model as a proof of concept. It used the following architecture:
+</p>
+
+<img alt="student model architecture" class="img-fluid" src="images/student.png" style="width:500;height:400px;">
+
+<p>
+  <br>
+  Our training loop was set up like so:
+</p>
+
+<img alt="training code" class="img-fluid" src="images/train.png" style="width:500;height:400px;">
+
+<p>
+  <br>
+  It is important to note what is being compared in the loss function. The student model's output logits are fed through a softmax
+  function with an increased temperature. This is then compared to a weighted average of the teacher model's output (also fed through
+  a softmax with increased temperature) and the ground-truth one-hot label.
 </p>
 
 
 <h2>4) Results</h2>
 
 <p>
-  Results discussion
+  The very first model we trained, small, and trained for only two epochs, yielded the following accuracy by class:
+</p>
+
+<img alt="training code" class="img-fluid" src="images/accuracy.png">
+
+<p>
+  <br>
+  These are some interesting results, but we definitely have some work to do still!
 </p>
 
 
