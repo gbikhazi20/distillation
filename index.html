@@ -89,11 +89,25 @@
 
 <img alt="training code" class="img-fluid" src="images/train.png" style="width:500;height:400px;">
 
+<p>
+  <br>
+  It is important to note what is being compared in the loss function. The student model's output logits are fed through a softmax
+  function with an increased temperature. This is then compared to a weighted average of the teacher model's output (also fed through
+  a softmax with increased temperature) and the ground-truth one-hot label.
+</p>
+
 
 <h2>4) Results</h2>
 
 <p>
-  Results discussion
+  The very first model we trained, small, and trained for only two epochs, yielded the following accuracy by class:
+</p>
+
+<img alt="training code" class="img-fluid" src="images/accuracy.png" style="width:400;height:500px;">
+
+<p>
+  <br>
+  These are some interesting results, but we definitely have some work to do still!
 </p>
 
 
