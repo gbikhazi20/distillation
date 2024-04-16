@@ -45,7 +45,35 @@
 <h2>1) Introduction</h2>
 
 <p>
-  Intro paragraph
+  For our project, we are exploring the topic of teacher-student training,
+  or more formally known as knowledge distillation. It deals with the idea
+  of transferring knowledge about certain data from a larger, more complex model
+  (the "teacher" model) to a smaller, more efficient "student" model. It is
+  a beneficial technique used in machine learning for a variety of reasons.
+  
+  One of the primary advantages of teacher-student training is model
+  compression. By distilling knowledge from a larger, complex "teacher"
+  model into a smaller, more lightweight "student" model, we can create
+  models that are faster and more resource-efficient for deployment on
+  devices with limited computational resources, such as mobile phones or
+  IoT devices.
+
+  In addition, experiments have shown that student models trained using
+  knowledge distillation often achieve better performance in terms of
+  its accuracy and efficiency as compared to models trained directly on the
+  original dataset. This is in part due to the improved generalization
+  that teacher-student training encourages. Instead of learning from the
+  hard targets (where the probability of each output is either a 1 or a 0),
+  the student model learns from soft targets (a more realistic target
+  distribution over all classes where instead of outputs having a
+  probability of 0% or 100%, they can have probabilities of 20% and 80%,
+  for example.) In teacher-student training, the dataset provides hard
+  targets (a single target label) and the teacher provides soft targets
+  (a distribution over all labels).
+
+  We are using a pre-trained model as our teacher model for this project.
+  The model was pre-trained on the well-known image classification CIFAR-10
+  data set. 
 </p>
 
 <p>
