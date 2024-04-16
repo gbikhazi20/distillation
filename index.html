@@ -82,11 +82,24 @@
 
 
 <h2>2) Paper Summary</h2>
-
+<p>The paper highlights the way in which distillation works. Neural networks
+   will typically produce class probabilities by using a “softmax” output 
+   layer that converts the logit, z_i, computed for each class into a
+   probability, q_i, by comparing z_i with the other logits. The formula is
+   as follows:
+</p>
 <p>
   <img alt="softmax with temperature" class="img-fluid" src="images/softmax_with_temp.png" style="width:300;height:100px;">
 </p>
-
+<p>In the simplest form of distillation, knowledge is transferred to the
+  distilled model by training it on a transfer set and using a soft target
+  distribution for each case in the transfer set that is produced by using
+  the larger, complex model with a higher temperature in its softmax.
+  The same high temperature is used when training the distilled model,
+  but after it has been trained it uses a temperature (T) of 1. However,
+  using a higher value for T produces a softer probability distribution
+  over classes.
+</p>
 
 <h2>3) Implementation</h2>
 
