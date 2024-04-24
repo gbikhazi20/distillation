@@ -83,15 +83,43 @@
 
 
 <h2>2) Paper Summary</h2>
-<p>The paper highlights the way in which distillation works. Neural networks
-   will typically produce class probabilities by using a softmax output 
-   layer that converts the logit, z_i, computed for each class into a
-   probability, q_i, by comparing z_i with the other logits. The formula is
-   as follows:
+<p>
+  Knowledge distillation is a form of model compression, and the original paper
+  motivates provides a new technique for doing so while giving an intuition
+  for why it works.
 </p>
+
+<p>
+  It all starts with the softmax function. A neural network outputs a vector of
+  logits, z, for each class. The softmax function converts these logits into
+  probabilities, q, for each class. A large, successful classification model will
+  typically output very high probabilities for the correct class and very low
+  probabilities for the incorrect classes. In the context of an image classification
+  model, an "image of a BMW [...] may only have a very small chance of being mistaken
+  for a garbage truck, but that mistake is still many times more probable than
+  mistaking it for a carrot" [1].
+</p>
+
+<p>
+  The idea is that these probabilities contain a lot of information about the
+  relationships between classes that the model has learned. The paper argues that
+  this information is not utilized when training a new model from scratch, since
+  that involves the new network just looking at one-hot ground truth vectors. 
+  The paper suggests that the model could be trained more efficiently if it could
+  learn from the probabilities that the teacher model outputs. This is where
+  knowledge distillation comes in. The teacher model's probabilities are used as
+  soft targets for the student model to learn from. The student model is trained
+  to output similar probabilities to the teacher model, rather than just the
+  one-hot ground truth vectors. The teacher model's probability distribution
+  can also be softened to highlight the differences in the probabilities between
+  classes, which can help the student model learn more effectively. This softening
+  is done by introducing a concept of <q>temperature</q> to the softmax function:
+</p>
+
 <p>
   <img alt="softmax with temperature" class="img-fluid" src="images/softmax_with_temp.png" style="width:300;height:100px;">
 </p>
+
 <p>In the simplest form of distillation, knowledge is transferred to the
   distilled model by training it on a transfer set and using a soft target
   distribution for each case in the transfer set that is produced by using
