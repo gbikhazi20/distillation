@@ -36,7 +36,6 @@
   >Geoffrey Hinton, Oriol Vinyals, and Jeff Dean.
   <em>Distilling the Knowledge in a Neural Network</em></a>
   NIPS Deep Learning and Representation Learning Workshop (2015).</p>
-<p>Describe the paper and the big question about it that interests you.</p>
 </div>
 </div>
 <div class="row">
@@ -148,16 +147,64 @@
 
 <p>
   <br>
-  These are some interesting results, but we definitely have some work to do still!
+  We trained a few more student models with different architectures as well. In
+  addition to experimenting with various student models, we also wanted to see the
+  difference in results by using either just the hard targets, soft targets, and then
+  a combination of both to train the student model. Below are some of our results:
 </p>
 
+<img alt="acc by model" class="img-fluid" src="images/acc_by_model.PNG">
+<p>
+  In this image, we see that the student model that was trained on just the hard
+  targets performed worse than the models trained on the soft targets and the mix of
+  soft and hard targets. This supports the paper's argument that using probabilities
+  of all classes for predicting a class is advantageous and provides improved accuracy.   
+</p>
+
+<p>
+  <br>
+  These are our accuracies by class for the soft targets student model and the mix
+  of both soft and hard targets model:   
+</p>
+
+<img alt="acc by class st" class="img-fluid" src="images/acc_by_class_st.PNG">
+<img alt="acc by class mix" class="img-fluid" src="images/acc_by_class_mix.PNG">
+
+<p>
+  From these two graphs, we can see that about half of the classes were more often 
+  classified correctly in the soft targets model, and the other half of the classes were 
+  more often correctly classified in the model trained on the mix of soft and hard 
+  targets.  
+</p>
+
+<p>
+  <br>
+  Lastly, we created confusion matrices to additionally show what classes the models
+  were getting correct/incorrect the most.
+</p>
+
+<img alt="conf matrix st" class="img-fluid" src="images/conf_matrix_st.PNG">
+<img alt="conf matrix mix" class="img-fluid" src="images/conf_matrix_mix.PNG">
+
+<p>
+  We were intrigued to find that part of the mistakes the models were making was that
+  they were specifically confusing modes of transportation, including a car, a plane,
+  a ship, and a truck. In addition, they were confusing classes in the middle of the 
+  matrix, such as birds, dogs, cats, and deers. 
+</p>
 
 <h2>5) Conclusion</h2>
 
 <p>
-  Conclusion paragraph
+  Our project was mainly experimenting with different ways of training a student model 
+  from a pre-trained teacher model in order to determine how advantageous and efficient 
+  it is. We ran multiple student models with various architectures in order to see if 
+  the number of convolutional layers affects the model's performance. We also trained 
+  on the soft targets only, the hard targets only, and on the mix both. In the end, we 
+  discovered that using soft targets does, in fact, improve the model's performance.
+  For future work, we would like to use different pre-trained models as the teacher 
+  model to see if this will make a difference when training student models.
 </p>
-
 
 <h3>References</h3>
 
