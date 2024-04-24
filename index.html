@@ -120,14 +120,14 @@
   <img alt="softmax with temperature" class="img-fluid" src="images/softmax_with_temp.png" style="width:400;height:200px;">
 </p>
 
-<p>In the simplest form of distillation, knowledge is transferred to the
-  distilled model by training it on a transfer set and using a soft target
-  distribution for each case in the transfer set that is produced by using
-  the larger, complex model with a higher temperature in its softmax.
-  The same high temperature is used when training the distilled model,
-  but after it has been trained it uses a temperature (T) of 1. However,
-  using a higher value for T produces a softer probability distribution
-  over classes.
+<p>The paper suggests using a weighted average of the teacher model's output and the
+  ground truth label as the target for the student model.
+</p>
+
+<p>
+  In our project, we end up using the same techniques as described in the paper,
+  but we apply them to the CIFAR-10 dataset instead of MNIST. CIFAR-10 is a more
+  complex dataset with larger, richer images.
 </p>
 
 <h2>3) Implementation</h2>
