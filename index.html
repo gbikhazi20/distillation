@@ -204,10 +204,15 @@ with the pre-trained models easy. Our own implementation lives in the teacher_st
 <img alt="acc by class mix" class="img-fluid" src="images/acc_by_class_mix.PNG">
 
 <p>
-  From these two graphs, we can see that about half of the classes were more often 
+  Looking at the graphs for student_st and student_mix, we can see that about half of the classes were more often 
   classified correctly in the soft targets model, and the other half of the classes were 
   more often correctly classified in the model trained on the mix of soft and hard 
   targets.  
+</p>
+
+<p>
+  It is also interesting to see that the student_st model most closely resembles the teacher model in terms of relative 
+  class accuracy. This makes intuitivesense since the student_st model was trained solely on the teacher model's output.
 </p>
 
 <p>
@@ -231,9 +236,8 @@ with the pre-trained models easy. Our own implementation lives in the teacher_st
 <p>
   Our project was mainly experimenting with different ways of training a student model 
   from a pre-trained teacher model in order to determine how advantageous and efficient 
-  it is. We ran multiple student models with various architectures in order to see if 
-  the number of convolutional layers affects the model's performance. We also trained 
-  on the soft targets only, the hard targets only, and on the mix both. In the end, we 
+  it is. We trained multiple student models with various alphas in order to see if 
+  the number how this would affect accuracy. In the end, we 
   discovered that using soft targets does, in fact, improve the model's performance.
   For future work, we would like to use different pre-trained models as the teacher 
   model to see if this will make a difference when training student models.
